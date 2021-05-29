@@ -6,16 +6,20 @@ module.exports = {
   // POST /v1/ewallet/transfer
   walletTransfer: {
     body: {
-      amount: Joi.number().positive().precision(2).min(10).max(50000).required(),
-      destinationAccountNumber: Joi.number().required()
+      amount: Joi.number().positive().precision(2).min(10)
+        .max(50000)
+        .required(),
+      destinationAccountNumber: Joi.number().required(),
     },
   },
 
   // POST /v1/ewallet/deposit
   walletDeposit: {
     body: {
-      amount: Joi.number().positive().precision(2).min(10).max(50000).required(),
-      card: Joi.string().creditCard().required()
+      amount: Joi.number().positive().precision(2).min(10)
+        .max(50000)
+        .required(),
+      card: Joi.string().creditCard().required(),
     },
   },
 

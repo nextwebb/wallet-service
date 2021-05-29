@@ -10,15 +10,15 @@ const moment = require('moment-timezone');
 const gatewayTransactionSchema = new mongoose.Schema({
   transactionId: {
     type: String,
-    required: true
+    required: true,
   },
   status: {
     type: String,
-    required: true
+    required: true,
   },
   paymentDate: {
     type: Date,
-    required: true
+    required: true,
   },
   amount: {
     type: Number,

@@ -1,9 +1,9 @@
 version: "2"
 services:
-  ewallet-api:
+  wallet-service:
     build: .
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/ewallet-rest-api
+      - MONGO_URI=mongodb://mongodb:27017/wallet-service
     volumes:
       - .:/app
     ports:

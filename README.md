@@ -1,6 +1,11 @@
-# E-Wallet Rest Api
-E-Wallet Rest Api Example. Using Node.js, Express and MongoDB.
+# Wallet Service
 
+Simple user wallet service. 	API using MEN stack for a 
+The API service should contain endpoints to:
+
+    Register a user(name, email, password)
+    Sign in a user
+    Credit and Debit a user's wallet as well as any other operations you think might be important for a wallet service.
 ## Requirements
 
  - [Node v7.6+](https://nodejs.org/en/download/current/) or [Docker](https://www.docker.com/)
@@ -8,22 +13,6 @@ E-Wallet Rest Api Example. Using Node.js, Express and MongoDB.
 
 ## Getting Started
 
-Clone the repo:
-
-```bash
-git clone https://github.com/mmucito/ewallet-rest-api.git
-cd ewallet-rest-api
-```
-Install yarn:
-
-```bash
-npm install -g yarn
-```
-
-Install dependencies:
-
-```bash
-yarn
 ```
 
 Set environment variables:
@@ -35,6 +24,10 @@ cp .env.example .env
 ## Running Locally
 
 ```bash
+yarn install
+```
+
+```bash
 yarn dev
 ```
 
@@ -44,16 +37,30 @@ yarn dev
 yarn start
 ```
 
+## Docker
+
+```bash
+# run container locally
+yarn docker:dev
+or
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+# run container in production
+yarn docker:prod
+or
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+
+# run tests
+yarn docker:test
+or
+docker-compose -f docker-compose.yml -f docker-compose.test.yml up
+```
+
+
+
 ## API Reference
-https://ewallet-rest-api.herokuapp.com/v1/docs/
+https://documenter.getpostman.com/view/6711768/TzXzCwLA
 
-## API Endpoint
-https://ewallet-rest-api.herokuapp.com/
-
-## API Postman Collection for Testing
-https://github.com/mmucito/ewallet-rest-api/blob/master/ewallet.postman_collection.json
-
-## Testing Locally...
 
 ### First you need to Create a Customer
 ```bash
@@ -195,52 +202,3 @@ pm2 logs
 # generate and open api documentation
 yarn docs
 ```
-
-## Docker
-
-```bash
-# run container locally
-yarn docker:dev
-or
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
-
-# run container in production
-yarn docker:prod
-or
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
-
-# run tests
-yarn docker:test
-or
-docker-compose -f docker-compose.yml -f docker-compose.test.yml up
-```
-
-## Deploy
-
-Set your server ip:
-
-```bash
-DEPLOY_SERVER=127.0.0.1
-```
-
-Replace my Docker username with yours:
-
-```bash
-nano deploy.sh
-```
-
-Run deploy script:
-
-```bash
-yarn deploy
-or
-sh ./deploy.sh
-```
-
-
-## License
-
-This project is licensed under the [MIT License](https://github.com/mmucito/ewallet-rest-api/blob/master/LICENSE)
-
-
-Using [express-rest-es2017-boilerplate](https://github.com/danielfsousa/express-rest-es2017-boilerplate) as a Starter Seed.

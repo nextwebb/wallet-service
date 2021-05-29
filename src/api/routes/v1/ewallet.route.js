@@ -1,14 +1,14 @@
 const express = require('express');
 const validate = require('express-validation');
 const controllerWallet = require('../../controllers/ewallet.controller');
-const { authorize, ADMIN, LOGGED_CUSTOMER } = require('../../middlewares/auth');
+const { authorize } = require('../../middlewares/auth');
 const {
-  listCustomers,
+  // listCustomers,
   walletDeposit,
   walletTransfer,
-  createCustomer,
-  replaceCustomer,
-  updateCustomer,
+  // createCustomer,
+  // replaceCustomer,
+  // updateCustomer,
 } = require('../../validations/customer.validation');
 
 const router = express.Router();
@@ -141,11 +141,11 @@ router
    */
   .post(authorize(), validate(walletTransfer), controllerWallet.transfer);
 
-  router
+router
   .route('/withdrawal')
   /**
    * @api {post} v1/ewallet/withdrawal eWallet Withdrawal
-   * @apiDescription Triggers a Debit Cards withdrawal from your account. These withdrawals are immediate during banking hours for some banks 
+   * @apiDescription Triggers a Debit Cards withdrawal from your account. These withdrawals are immediate during banking hours for some banks
    * @apiVersion 1.0.0
    * @apiName Withdrawal
    * @apiGroup eWallet

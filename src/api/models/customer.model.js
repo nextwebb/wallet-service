@@ -7,8 +7,10 @@ const moment = require('moment-timezone');
 const jwt = require('jwt-simple');
 const APIError = require('../utils/APIError');
 const autoIncrement = require('../services/mongooseAutoIncrement');
-const { env, jwtSecret, jwtExpirationInterval, masterAccount, masterAccountPassword } = require('../../config/vars');
-const uuidv4 = require('uuid/v4');
+const {
+  env, jwtSecret, jwtExpirationInterval, masterAccount, masterAccountPassword,
+} = require('../../config/vars');
+// const uuidv4 = require('uuid/v4');
 
 autoIncrement.initialize(mongooseBD.connect());
 
@@ -50,13 +52,12 @@ const customerSchema = new mongoose.Schema({
   balance: {
     type: Number,
     min: 0,
-    default: 0
+    default: 0,
   },
 
 }, {
   timestamps: true,
 });
-
 
 
 /**
@@ -166,13 +167,12 @@ customerSchema.statics = {
       password: masterAccountPassword,
     };
     try {
-      let customer = await this.findOne({ 'accountNumber': masterAccountData.accountNumber }).exec();
-      
+      const customer = await this.findOne({ accountNumber: masterAccountData.accountNumber }).exec();
+
       if (customer) {
         return customer;
-      }else{
-        return await this.create(masterAccountData);
-      }      
+      }
+      return await this.create(masterAccountData);
     } catch (error) {
       throw error;
     }
@@ -254,7 +254,7 @@ customerSchema.plugin(autoIncrement.plugin, {
   model: 'Customer',
   field: 'accountNumber',
   startAt: 1001,
-  incrementBy: 1
+  incrementBy: 1,
 });
 
 /**

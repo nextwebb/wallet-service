@@ -1,4 +1,4 @@
 version: "2"
 services:
-  ewallet-api:
+  wallet-service:
     command: yarn dev -- -L

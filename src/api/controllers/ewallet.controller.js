@@ -1,11 +1,11 @@
-const httpStatus = require('http-status');
-const { omit } = require('lodash');
-const Customer = require('../models/customer.model');
+// const httpStatus = require('http-status');
+// const { omit } = require('lodash');
+// const Customer = require('../models/customer.model');
 const Transaction = require('../models/transaction.model');
 const paymentService = require('../services/paymentService');
 const withdrawalService = require('../services/withdrawalService');
 const transferService = require('../services/transferService');
-const { handler: errorHandler } = require('../middlewares/error');
+// const { handler: errorHandler } = require('../middlewares/error');
 
 
 /**
@@ -35,9 +35,9 @@ exports.getTransactions = async (req, res, next) => {
  */
 exports.deposit = async (req, res, next) => {
   try {
-    const paymentResponse = await paymentService.debitCard(req.customer.accountNumber, req.body.card, req.body.amount);        
-    res.json(paymentResponse);    
-    
+    // eslint-disable-next-line max-len
+    const paymentResponse = await paymentService.debitCard(req.customer.accountNumber, req.body.card, req.body.amount);
+    res.json(paymentResponse);
   } catch (error) {
     next(error);
   }
@@ -48,10 +48,10 @@ exports.deposit = async (req, res, next) => {
  * @public
  */
 exports.transfer = async (req, res, next) => {
-  try {    
-    const transferResponse = await transferService.transfer(req.customer.accountNumber, req.body.amount, req.body.destinationAccountNumber);    
-    res.json(transferResponse);    
-    
+  try {
+    // eslint-disable-next-line max-len
+    const transferResponse = await transferService.transfer(req.customer.accountNumber, req.body.amount, req.body.destinationAccountNumber);
+    res.json(transferResponse);
   } catch (error) {
     next(error);
   }
@@ -63,9 +63,9 @@ exports.transfer = async (req, res, next) => {
  */
 exports.withdrawal = async (req, res, next) => {
   try {
-    const withdrawalResponse = await withdrawalService.withdrawal(req.customer.accountNumber, req.body.card, req.body.amount);        
-    res.json(withdrawalResponse);    
-    
+    // eslint-disable-next-line max-len
+    const withdrawalResponse = await withdrawalService.withdrawal(req.customer.accountNumber, req.body.card, req.body.amount);
+    res.json(withdrawalResponse);
   } catch (error) {
     next(error);
   }
